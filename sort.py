@@ -11,12 +11,19 @@ class DrawAttributes:
     WHITE = 255, 255, 255
     GREEN = 0, 255, 0
     RED = 255, 0, 0
-    BACKGROUND_COLOR = WHITE
+    PINK = 255, 182, 193
+    BACKGROUND_COLOR = BLACK #WHITE
 
-    GRADIENT = [
+    """GRADIENT = [
         (128, 128, 128),
         (160, 160, 160),
         (192, 192, 192)
+    ]"""
+
+    GRADIENT = [
+        (255, 192, 203),
+        (255, 105, 180),
+        (255, 20, 147)
     ]
     SMALL_FONT = pygame.font.SysFont('Helvetica', 15)
     FONT = pygame.font.SysFont('Helvetica', 25)
@@ -44,15 +51,15 @@ class DrawAttributes:
         self.window.fill(self.BACKGROUND_COLOR)
 
         title = self.LARGE_FONT.render(f"{algo_name} - {'Ascending' if ascending else 'Descending'}",
-                                       True, self.GREEN)
+                                       True, self.PINK)
         self.window.blit(title, (self.width / 2 - title.get_width() / 2, 5))
 
         controls = self.FONT.render("N - New | R - Reset | SPACE - Start Sorting | A - Ascending | D - Descending",
                                     True,
-                                    self.BLACK)
+                                    self.PINK)
         self.window.blit(controls, (self.width / 2 - controls.get_width() / 2, 50))
 
-        algorithms = self.FONT.render("I - Insertion Sort | H - Heap Sort | B - Bubble Sort", True, self.BLACK)
+        algorithms = self.FONT.render("I - Insertion Sort | H - Heap Sort | B - Bubble Sort", True, self.PINK)
         self.window.blit(algorithms, (self.width / 2 - algorithms.get_width() / 2, 80))
 
         self.draw_list()
@@ -88,7 +95,7 @@ class DrawAttributes:
         time_blit = self.SMALL_FONT.render(f"{s_times.insertion}{'s' if s_times.insertion else ''} | "
                                            f"{s_times.heap}{'s' if s_times.heap else ''} | "
                                            f"{s_times.bubble}{'s' if s_times.bubble else ''}"
-                                           , True, self.BLACK)
+                                           , True, self.PINK)
         self.window.blit(time_blit, (self.width / 2 - time_blit.get_width() / 2, 110))
 
 
@@ -219,7 +226,7 @@ def main():
     s_times = SortingTimes()
 
     while run:
-        # pygame.time.Clock().tick(60)
+        pygame.time.Clock().tick(30)
         if sorting:
             try:
                 next(sorting_algorithm_generator)
