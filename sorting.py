@@ -80,8 +80,8 @@ def draw_list(draw_info, color_positions={}, clear_bg=False):
 
         pygame.draw.rect(draw_info.window, color, (x, y, draw_info.block_width, draw_info.height))
 
-    # if clear_rect:
-    pygame.display.update()
+    if clear_bg:
+        pygame.display.update()
 
 
 def generate_starting_list(n, min_val, max_val):
@@ -108,7 +108,7 @@ def bubble_sort(draw_info, ascending=True):
 
 
 def insertion_sort(draw_info, ascending=True):
-    lst = []
+    lst = draw_info.lst
 
     for i in range(1, len(lst)):
         current = lst[i]
